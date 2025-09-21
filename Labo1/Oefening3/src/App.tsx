@@ -1,35 +1,52 @@
-
-const App = () => {
-
-  const numbers:number [] = [1,2,3,4,5,6,7,8,9,10];
-  
-  interface Student {
-    id:number;
-    name:string;
-    age:number;
-  }
-
+interface Student {
+  id:number;
+  name:string;
+  age:number;
+}
+const app = () => {
+  const numbers:number[] = [1,2,3,4,5,4,3];
   const students:Student[] = [
-    {id:1,name:"Jef",age:23},
-    {id:2,name:"Jan",age:32},
-    {id:3,name:"Joris",age:12},
-    {id:4,name:"Andie",age:34},
-    {id:5,name:"Senne",age:26},
-    {id:6,name:"Karam",age:28}
+    {id:0,name:"Jef",age:34},
+    {id:1,name:"Jan",age:54},
+    {id:2,name:"Joris",age:34},
+    {id:3,name:"Andie",age:34},
+    {id:4,name:"Senne",age:34},
   ]
-
-  
-
-  return (
-   <>
-     <h1>Labo 1: Lijsten</h1>
-     <ul>
-      {numbers.map((number) =>(
-        <li key={number}>{number}</li>
-      ))}
-     </ul>
-    </>
-  );
-};
-
-export default App;
+  return(
+      <div>
+        <h1>Labo1: Lijsten</h1>
+        <ul>
+          {
+            numbers.map((number,index) => <li key={index}>{number}</li>)
+          }
+        </ul>
+        <h1>Studentenlijst</h1>
+        <ol>
+          {
+              students.map((student) => <li key={student.id}>{student.name}</li>)
+          }
+        </ol>
+        <h1>Studentenlijst</h1>
+        <ol>
+          {
+              students.filter(student => student.name.startsWith("J")).map((student) => <li key={student.id}>{student.name}</li>)
+          }
+        </ol>
+        <select>
+          {students.map(s => (<option>{s.name}</option>))}
+        </select>
+        <table>
+          <thead>
+            <th>Naam</th>
+            <th>Leeftijd</th>
+          </thead>
+          <tbody>
+            <tr>
+            {students.map((s) => <td key={s.id}>{s.name}</td>)}
+            {students.map((s) => <td key={s.id}>{s.age}</td>)}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  )
+} 

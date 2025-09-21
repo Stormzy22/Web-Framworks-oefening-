@@ -13,11 +13,12 @@ const App = () => {
   };
   return (
     <>
+    <h1>Labo 1: Expressies </h1>
       <h1>{random}</h1>
       <h1>{number1}</h1>
       <h1>{number2}</h1>
       <h1>
-        {random < 5.0 ? add(number1, number2) : multiply(number1, number2)}
+        {random < 5.0 ? add(number1, number2) : multiply(number1, number2)}     
       </h1>
     </>
   );
