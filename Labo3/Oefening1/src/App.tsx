@@ -1,6 +1,7 @@
+
 const RandomColor = () =>{
-const color:string[] = ["red","blue","green","yellow"];
-const index:number = Math.floor(Math.random() * 5)
+const color:string[] = ["red","blue","green","yellow","pink","brown"];
+const index:number = Math.floor(Math.random() * color.length)
 return color[index];
 }
 
@@ -10,16 +11,31 @@ interface ColorSquareProps{
 }
 
 const ColorSquare =({color,size} : ColorSquareProps)=>{
-return  <div style={{background:color, width:size,height:size}}></div>
+  const handelclick:React.MouseEventHandler<HTMLDivElement> =(event) =>{
+    alert(`ColorSquare clicked with color: ${color}`)
+  }
+
+  return <div style={{background:color, margin:2, width:size,height:size}} onClick={handelclick}></div>
+}
+
+const ColorKlicker = () =>{
+  const size:number =  100
+  const colorArray = Array.from({ length:10 }, () => RandomColor());
+  return(
+    <>
+      <div style={{display:"flex",flexDirection:"row"}}> 
+      {colorArray.map((color,index) => <ColorSquare key={index} color={ color} size={size} />)}
+      </div>
+    </>
+  )
 }
 
 const App =() =>{
-  const size:number =  100
-  return(
-    <>
-      {Array.from({length:size},(_,i) => <ColorSquare color={ RandomColor()} size={size} />)}
-    </>
-  )
+ return(
+  <>
+  <ColorKlicker/>
+  </>
+ ) 
 }
 
 export default App;
